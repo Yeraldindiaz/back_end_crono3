@@ -29,7 +29,7 @@ public class Evento implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "deport_FK")
-    private Deporte deport_FK;
+    private Deporte deporteFK;
 
     @OneToMany(mappedBy = "EventoFK", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TiempoCompetencia> list_Tiempo_Competencias;
@@ -79,11 +79,11 @@ public class Evento implements Serializable {
     }
 
     public Deporte getDeport_FK() {
-        return deport_FK;
+        return deporteFK;
     }
 
     public void setDeport_FK(Deporte deport_FK) {
-        this.deport_FK = deport_FK;
+        this.deporteFK = deport_FK;
     }
 
     public List<TiempoCompetencia> getList_Tiempo_Competencias() {
