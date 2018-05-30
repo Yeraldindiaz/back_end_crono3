@@ -25,7 +25,7 @@ public class EntrenadorDTO {
     private String fechaNacimiento;
     private int cedula;
     private String ciudad;
-    private String contraseña;
+    private String contrasena;
     private DeporteDTO deporteFK;
     
     public int getID_Entrenador() {
@@ -76,12 +76,12 @@ public class EntrenadorDTO {
         this.ciudad = ciudad;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public DeporteDTO getDeporteFK() {

@@ -27,7 +27,7 @@ public class Entrenador implements Serializable {
     private String fechaNacimiento;
     private int cedula;
     private String ciudad;
-    private String contraseña;
+    private String contrasena;
 
     @ManyToOne
     @JoinColumn(name = "deporteFK")
@@ -92,12 +92,12 @@ public class Entrenador implements Serializable {
         this.ciudad = ciudad;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public Deporte getDeporteFK() {

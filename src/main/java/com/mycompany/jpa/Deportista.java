@@ -28,7 +28,7 @@ public class Deportista implements Serializable {
     private int cedula;
     private String ciudad;
     private String categoria;
-    private String Contraseña;
+    private String contrasena;
 
     @ManyToOne
     @JoinColumn(name = "deporteFK")
@@ -113,12 +113,12 @@ public class Deportista implements Serializable {
         this.categoria = categoria;
     }
 
-    public String getContraseña() {
-        return Contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String Contraseña) {
-        this.Contraseña = Contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public Deporte getDeporteFK() {

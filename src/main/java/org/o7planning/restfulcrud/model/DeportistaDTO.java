@@ -24,7 +24,7 @@ public class DeportistaDTO {
     private int cedula;
     private String ciudad;
     private String categoria;
-    private String Contraseña;
+    private String contrasena;
     private DeporteDTO deporteFK;
     private EntrenadorDTO entrenadorFK;
 
@@ -84,12 +84,12 @@ public class DeportistaDTO {
         this.categoria = categoria;
     }
 
-    public String getContraseña() {
-        return Contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String Contraseña) {
-        this.Contraseña = Contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public DeporteDTO getDeporteFK() {

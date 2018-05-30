@@ -50,7 +50,7 @@ public class ConversorDTO {
         deportistaDTO.setCedula(a.getCedula());
         deportistaDTO.setCiudad(a.getCiudad());
         deportistaDTO.setCategoria(a.getCategoria());
-        deportistaDTO.setContraseña(a.getContraseña());
+        deportistaDTO.setContrasena(a.getContrasena());
         deportistaDTO.setDeporteFK(deportesToDTO(a.getDeporteFK()));
         deportistaDTO.setEntrenadorFK(entrenadorToDTO(a.getEntrenadorFK()));
         return deportistaDTO;
@@ -98,7 +98,7 @@ public class ConversorDTO {
         entrenadorDTO.setApellido(a.getApellido());
         entrenadorDTO.setCedula(a.getCedula());
         entrenadorDTO.setCiudad(a.getCiudad());
-        entrenadorDTO.setContraseña(a.getContraseña());
+        entrenadorDTO.setContrasena(a.getContrasena());
         entrenadorDTO.setFechaNacimiento(a.getFechaNacimiento());
         entrenadorDTO.setDeporteFK(deportesToDTO(a.getDeporteFK()));
         return entrenadorDTO;
