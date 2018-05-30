@@ -5,7 +5,7 @@
  */
 package edu.sergioArboleda.facade;
 
-import com.mycompany.jpa.Deportes;
+import com.mycompany.jpa.Deporte;
 import edu.sergioArboleda.dao.ServiceImpl;
 import edu.sergioArboleda.dao.SingletonConnection;
 import edu.sergioArboleda.exception.ConexionException;
@@ -16,9 +16,9 @@ import javax.persistence.EntityManager;
  *
  * @author MARIO
  */
-public class DeportesFachada extends ServiceImpl<Deportes>{
+public class DeportesFachada extends ServiceImpl<Deporte>{
     public DeportesFachada() throws ConexionException {
-        super(Deportes.class);
+        super(Deporte.class);
         try{
              EntityManager em = SingletonConnection.getConnection();
             super.setEntityManager(em);
@@ -29,7 +29,7 @@ public class DeportesFachada extends ServiceImpl<Deportes>{
     }
     
     @Override
-    public List<Deportes> findAll() {
+    public List<Deporte> findAll() {
         return super.findAll();
     }
 }

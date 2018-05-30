@@ -27,16 +27,15 @@ public class Evento implements Serializable {
     private String fecha;
     private String lugar;
 
-    public Evento() {
-        this.list_Tiempo_Competencias = new ArrayList<>();
-    }
+    @ManyToOne
+    @JoinColumn(name = "deport_FK")
+    private Deporte deport_FK;
 
-    public Evento(String nombre, String Tipo, String fecha, String lugar) {
-        this.nombre = nombre;
-        this.Tipo = Tipo;
-        this.fecha = fecha;
-        this.lugar = lugar;
-        this.list_Tiempo_Competencias = new ArrayList<>();
+    @OneToMany(mappedBy = "EventoFK", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TiempoCompetencia> list_Tiempo_Competencias;
+
+    public Evento() {
+        list_Tiempo_Competencias = new ArrayList<>();
     }
 
     public int getID_Evento() {
@@ -79,28 +78,13 @@ public class Evento implements Serializable {
         this.lugar = lugar;
     }
 
-    @Override
-    public String toString() {
-        return "Evento{" + "id=" + ID_Evento + ", nombre=" + nombre + ", Tipo=" + Tipo + ", fecha=" + fecha + ", lugar=" + lugar + '}';
-    }
-
-    //Realacoin de 0-1----1 entrew (Evento --- Deporte)
-    @ManyToOne
-    @JoinColumn(name = "deport_FK")
-    private Deportes deport_FK;
-
-    public Deportes getDeport_FK() {
+    public Deporte getDeport_FK() {
         return deport_FK;
     }
 
-    public void setDeport_FK(Deportes deport_FK) {
+    public void setDeport_FK(Deporte deport_FK) {
         this.deport_FK = deport_FK;
     }
-
-    // Relacion de 1-M entre (Evento -- Tiempo Competencia)
-    //Se Referencia al mapeo, con elnombre de la variable en la clase
-    @OneToMany(mappedBy = "EventoFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TiempoCompetencia> list_Tiempo_Competencias;
 
     public List<TiempoCompetencia> getList_Tiempo_Competencias() {
         return list_Tiempo_Competencias;
@@ -109,11 +93,5 @@ public class Evento implements Serializable {
     public void setList_Tiempo_Competencias(List<TiempoCompetencia> list_Tiempo_Competencias) {
         this.list_Tiempo_Competencias = list_Tiempo_Competencias;
     }
-
-    public void addEvento(TiempoCompetencia tiempo_Competencia) {
-        tiempo_Competencia.setEventoFK(this);
-        this.list_Tiempo_Competencias.add(tiempo_Competencia);
-
-    }
-
+    
 }

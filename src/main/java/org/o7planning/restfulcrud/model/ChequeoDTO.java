@@ -21,7 +21,7 @@ public class ChequeoDTO {
     private String prueba;
     private int distancia;
     private String tiempo;
-    private DeportistaDTO deportistaFK;
+    private DeportistaDTO deportistaDTO;
 
     public int getID_Chequeo() {
         return ID_Chequeo;
@@ -55,12 +55,12 @@ public class ChequeoDTO {
         this.tiempo = tiempo;
     }
 
-    public DeportistaDTO getDeportistaFK() {
-        return deportistaFK;
+    public DeportistaDTO getDeportistaDTO() {
+        return deportistaDTO;
     }
 
-    public void setDeportistaFK(DeportistaDTO deportistaFK) {
-        this.deportistaFK = deportistaFK;
+    public void setDeportistaDTO(DeportistaDTO deportistaDTO) {
+        this.deportistaDTO = deportistaDTO;
     }
 
 }

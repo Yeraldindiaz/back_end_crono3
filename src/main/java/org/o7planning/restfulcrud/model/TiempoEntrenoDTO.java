@@ -22,8 +22,8 @@ public class TiempoEntrenoDTO {
     private String tiempoexigencia;
     private String tiempodescanso;
     private int serie;
-    private DeportistaDTO deportistaFK;
-    private RutinaDTO rutinaFK;
+    private DeportistaDTO deportistaDTO;
+    private RutinaDTO rutinaDTO;
 
     public int getID_tiempos() {
         return ID_tiempos;
@@ -65,20 +65,20 @@ public class TiempoEntrenoDTO {
         this.serie = serie;
     }
 
-    public DeportistaDTO getDeportistaFK() {
-        return deportistaFK;
+    public DeportistaDTO getDeportistaDTO() {
+        return deportistaDTO;
     }
 
-    public void setDeportistaFK(DeportistaDTO deportistaFK) {
-        this.deportistaFK = deportistaFK;
+    public void setDeportistaDTO(DeportistaDTO deportistaDTO) {
+        this.deportistaDTO = deportistaDTO;
     }
 
-    public RutinaDTO getRutinaFK() {
-        return rutinaFK;
+    public RutinaDTO getRutinaDTO() {
+        return rutinaDTO;
     }
 
-    public void setRutinaFK(RutinaDTO rutinaFK) {
-        this.rutinaFK = rutinaFK;
+    public void setRutinaDTO(RutinaDTO rutinaDTO) {
+        this.rutinaDTO = rutinaDTO;
     }
 
 }

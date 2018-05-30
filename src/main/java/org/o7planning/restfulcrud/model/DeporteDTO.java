@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "DeporteDTO")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DeportesDTO {
+public class DeporteDTO {
 
     private int ID_Deporte;
     private String nombre;

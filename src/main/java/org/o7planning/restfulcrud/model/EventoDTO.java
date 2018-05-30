@@ -22,7 +22,7 @@ public class EventoDTO {
     private String Tipo;
     private String fecha;
     private String lugar;
-    private DeportesDTO deporteFK;
+    private DeporteDTO deporteFK;
 
     public int getID_Evento() {
         return ID_Evento;
@@ -64,11 +64,11 @@ public class EventoDTO {
         this.lugar = lugar;
     }
 
-    public DeportesDTO getDeporteFK() {
+    public DeporteDTO getDeporteFK() {
         return deporteFK;
     }
 
-    public void setDeporteFK(DeportesDTO deporteFK) {
+    public void setDeporteFK(DeporteDTO deporteFK) {
         this.deporteFK = deporteFK;
     }
 }

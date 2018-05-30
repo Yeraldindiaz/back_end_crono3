@@ -28,17 +28,15 @@ public class Rutina implements Serializable {
     private String fecha;
     private String jornada;
 
-    public Rutina() {
-        this.list_TimeEnt = new ArrayList<>();
-    }
+    @ManyToOne
+    @JoinColumn(name = "entrenadorFK")
+    private Entrenador entrenadorFK;
 
-    public Rutina(int repeticiones, int distancia, String estilo, String fecha, String jornada) {
-        this.repeticiones = repeticiones;
-        this.distancia = distancia;
-        this.estilo = estilo;
-        this.fecha = fecha;
-        this.jornada = jornada;
-        this.list_TimeEnt = new ArrayList<>();
+    @OneToMany(mappedBy = "rutinaFK", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TiempoEntreno> list_TimeEnt;
+
+    public Rutina() {
+        list_TimeEnt = new ArrayList<>();
     }
 
     public int getID_Rutina() {
@@ -89,16 +87,6 @@ public class Rutina implements Serializable {
         this.jornada = jornada;
     }
 
-    @Override
-    public String toString() {
-        return "Rutina{" + "ID_Rutina=" + ID_Rutina + ", repeticiones=" + repeticiones + ", distancia=" + distancia + ", estilo=" + estilo + ", fecha=" + fecha + ", jornada=" + jornada + '}';
-    }
-
-    //Realacoin de 0-1----1 entrew (Rutina --- Entrenador)
-    @ManyToOne
-    @JoinColumn(name = "entrenadorFK")
-    private Entrenador entrenadorFK;
-
     public Entrenador getEntrenadorFK() {
         return entrenadorFK;
     }
@@ -107,12 +95,6 @@ public class Rutina implements Serializable {
         this.entrenadorFK = entrenadorFK;
     }
 
-    // Relacion de 1-M entre (Deportista --- Tiempo entrenamiento)
-    //Se Referencia al mapeo, con elnombre de la variable en la clase
-    @OneToMany(mappedBy = "rutinaFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TiempoEntreno> list_TimeEnt;
-
-    //Metodos
     public List<TiempoEntreno> getList_TimeEnt() {
         return list_TimeEnt;
     }
@@ -121,8 +103,4 @@ public class Rutina implements Serializable {
         this.list_TimeEnt = list_TimeEnt;
     }
 
-    public void addTiempoEntre(TiempoEntreno objetoR) {
-        objetoR.setRutinaFK(this);
-        this.list_TimeEnt.add(objetoR);
-    }
 }

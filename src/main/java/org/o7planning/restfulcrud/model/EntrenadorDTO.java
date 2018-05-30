@@ -5,6 +5,8 @@
  */
 package org.o7planning.restfulcrud.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -24,8 +26,8 @@ public class EntrenadorDTO {
     private int cedula;
     private String ciudad;
     private String contraseña;
-    private DeportesDTO deporteFK;
-
+    private DeporteDTO deporteFK;
+    
     public int getID_Entrenador() {
         return ID_Entrenador;
     }
@@ -82,11 +84,11 @@ public class EntrenadorDTO {
         this.contraseña = contraseña;
     }
 
-    public DeportesDTO getDeporteFK() {
+    public DeporteDTO getDeporteFK() {
         return deporteFK;
     }
 
-    public void setDeporteFK(DeportesDTO deporteFK) {
+    public void setDeporteFK(DeporteDTO deporteFK) {
         this.deporteFK = deporteFK;
     }
 

@@ -4,12 +4,12 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.mycompany.jpa.Asistencia</class>
     <class>com.mycompany.jpa.Chequeo</class>
-    <class>com.mycompany.jpa.Deportes</class>
     <class>com.mycompany.jpa.Deportista</class>
     <class>com.mycompany.jpa.Entrenador</class>
     <class>com.mycompany.jpa.Evento</class>
     <class>com.mycompany.jpa.Rutina</class>
     <class>com.mycompany.jpa.TiempoCompetencia</class>
     <class>com.mycompany.jpa.TiempoEntreno</class>
+    <class>com.mycompany.jpa.Deporte</class>
   </persistence-unit>
 </persistence>

@@ -25,15 +25,13 @@ public class TiempoCompetencia implements Serializable {
     private String tiempo;
     private String categoria;
 
-    public TiempoCompetencia() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "eventoFK")
+    private Evento EventoFK;
 
-    public TiempoCompetencia(String prueba, int distancia, String tiempo, String categoria) {
-        this.prueba = prueba;
-        this.distancia = distancia;
-        this.tiempo = tiempo;
-        this.categoria = categoria;
-    }
+    @ManyToOne
+    @JoinColumn(name = "deportistaFK")
+    private Deportista deportistaFK;
 
     public int getID_tiempos() {
         return ID_tiempos;
@@ -75,16 +73,6 @@ public class TiempoCompetencia implements Serializable {
         this.categoria = categoria;
     }
 
-    @Override
-    public String toString() {
-        return "Tiempo_Competencia{" + "ID_tiempos=" + ID_tiempos + ", prueba=" + prueba + ", distancia=" + distancia + ", tiempo=" + tiempo + ", categoria=" + categoria + '}';
-    }
-
-    //Realacoin de 0-1----1 entrew (Tiempo Com -- Evento)
-    @ManyToOne
-    @JoinColumn(name = "eventoFK")
-    private Evento EventoFK;
-
     public Evento getEventoFK() {
         return EventoFK;
     }
@@ -93,11 +81,6 @@ public class TiempoCompetencia implements Serializable {
         this.EventoFK = EventoFK;
     }
 
-    //Realacoin de 0-1----1 entrew (Tiempo Com -- Deportista)
-    @ManyToOne
-    @JoinColumn(name = "deportistaFK")
-    private Deportista deportistaFK;
-
     public Deportista getDeportistaFK() {
         return deportistaFK;
     }
@@ -105,4 +88,5 @@ public class TiempoCompetencia implements Serializable {
     public void setDeportistaFK(Deportista deportistaFK) {
         this.deportistaFK = deportistaFK;
     }
+
 }

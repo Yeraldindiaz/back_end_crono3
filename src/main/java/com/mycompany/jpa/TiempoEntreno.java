@@ -25,15 +25,13 @@ public class TiempoEntreno implements Serializable {
     private String tiempodescanso;
     private int serie;
 
-    public TiempoEntreno() {
-    }
+    @ManyToOne
+    @JoinColumn(name = "deportistaFK")
+    private Deportista deportistaFK;
 
-    public TiempoEntreno(String tiempo, String tiempoexigencia, String nombtiempodescansore, int serie) {
-        this.tiempo = tiempo;
-        this.tiempoexigencia = tiempoexigencia;
-        this.tiempodescanso = nombtiempodescansore;
-        this.serie = serie;
-    }
+    @ManyToOne
+    @JoinColumn(name = "rutinaFK")
+    private Rutina rutinaFK;
 
     public int getID_tiempos() {
         return ID_tiempos;
@@ -75,16 +73,6 @@ public class TiempoEntreno implements Serializable {
         this.serie = serie;
     }
 
-    @Override
-    public String toString() {
-        return "Tiempo_Entrenamiento{" + "ID_tiempos=" + ID_tiempos + ", tiempo=" + tiempo + ", tiempoexigencia=" + tiempoexigencia + ", nombtiempodescansore=" + tiempodescanso + ", serie=" + serie + '}';
-    }
-
-    //Realacoin de 0-1----1 entrew (Tiempo de eEntrenamiento --- Deportista)
-    @ManyToOne
-    @JoinColumn(name = "deportistaFK")
-    private Deportista deportistaFK;
-
     public Deportista getDeportistaFK() {
         return deportistaFK;
     }
@@ -93,11 +81,6 @@ public class TiempoEntreno implements Serializable {
         this.deportistaFK = deportistaFK;
     }
 
-    //Realacoin de 0-1----1 entrew (Tiempo de eEntrenamiento --- Rutina)
-    @ManyToOne
-    @JoinColumn(name = "rutinaFK")
-    private Rutina rutinaFK;
-
     public Rutina getRutinaFK() {
         return rutinaFK;
     }
@@ -105,4 +88,5 @@ public class TiempoEntreno implements Serializable {
     public void setRutinaFK(Rutina rutinaFK) {
         this.rutinaFK = rutinaFK;
     }
+
 }

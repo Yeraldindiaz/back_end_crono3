@@ -30,14 +30,9 @@ public class Chequeo implements Serializable {
     private int distancia;
     private String tiempo;
 
-    public Chequeo() {
-    }
-
-    public Chequeo(String prueba, int distancia, String tiempo) {
-        this.prueba = prueba;
-        this.distancia = distancia;
-        this.tiempo = tiempo;
-    }
+    @ManyToOne
+    @JoinColumn(name = "deportistaFK")
+    private Deportista deportistaFK;
 
     public int getID_Chequeo() {
         return ID_Chequeo;
@@ -70,16 +65,6 @@ public class Chequeo implements Serializable {
     public void setTiempo(String tiempo) {
         this.tiempo = tiempo;
     }
-
-    @Override
-    public String toString() {
-        return "Chequeo{" + "id=" + ID_Chequeo + ", prueba=" + prueba + ", distancia=" + distancia + ", tiempo=" + tiempo + '}';
-    }
-
-    //Realacoin de 0-1----1 entrew (Chequeo---Deportista)
-    @ManyToOne
-    @JoinColumn(name = "deportistaFK")
-    private Deportista deportistaFK;
 
     public Deportista getDeportistaFK() {
         return deportistaFK;

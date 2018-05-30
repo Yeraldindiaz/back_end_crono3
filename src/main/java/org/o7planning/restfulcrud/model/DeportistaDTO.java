@@ -25,7 +25,7 @@ public class DeportistaDTO {
     private String ciudad;
     private String categoria;
     private String Contraseña;
-    private DeportesDTO deporteFK;
+    private DeporteDTO deporteFK;
     private EntrenadorDTO entrenadorFK;
 
     public int getID_Deportista() {
@@ -92,11 +92,11 @@ public class DeportistaDTO {
         this.Contraseña = Contraseña;
     }
 
-    public DeportesDTO getDeporteFK() {
+    public DeporteDTO getDeporteFK() {
         return deporteFK;
     }
 
-    public void setDeporteFK(DeportesDTO deporteFK) {
+    public void setDeporteFK(DeporteDTO deporteFK) {
         this.deporteFK = deporteFK;
     }
 

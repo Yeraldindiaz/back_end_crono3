@@ -1,8 +1,8 @@
 package com.mycompany.holamuntorest;
 
 import edu.sergioArboleda.facade.DeportesFachada;
-import com.mycompany.jpa.Deportes;
-import org.o7planning.restfulcrud.model.DeportesDTO;
+import com.mycompany.jpa.Deporte;
+import org.o7planning.restfulcrud.model.DeporteDTO;
 import edu.sergioArboleda.exception.ConexionException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,23 +16,23 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@Path("/deportes")
-public class DeportesSv {
+@Path("/deporte")
+public class DeporteSv {
 
     DeportesFachada DeportesFachada;
     ConversorDTO conversor;
 
-    public DeportesSv() throws ConexionException {
+    public DeporteSv() throws ConexionException {
         DeportesFachada = new DeportesFachada();
         conversor = new ConversorDTO();
     }
 
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<DeportesDTO> getDeportess_JSON() {
-        List<Deportes> listaDeportess = DeportesFachada.findAll();
-        List<DeportesDTO> DeportesDTOs = new ArrayList<>();
-        for (Deportes listaDeportes : listaDeportess) {
+    public List<DeporteDTO> getDeportess_JSON() {
+        List<Deporte> listaDeportess = DeportesFachada.findAll();
+        List<DeporteDTO> DeportesDTOs = new ArrayList<>();
+        for (Deporte listaDeportes : listaDeportess) {
             DeportesDTOs.add(conversor.deportesToDTO(listaDeportes));
         }
         return DeportesDTOs;
@@ -41,14 +41,14 @@ public class DeportesSv {
     @GET
     @Path("/{usrNo}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public DeportesDTO getDeportes(@PathParam("usrNo") int usrNo) {
+    public DeporteDTO getDeportes(@PathParam("usrNo") int usrNo) {
         return conversor.deportesToDTO(DeportesFachada.get(usrNo));
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public boolean crearDeportes(Deportes usr) {
+    public boolean crearDeportes(Deporte usr) {
         try {
             DeportesFachada.save(usr);
             return true;
@@ -60,7 +60,7 @@ public class DeportesSv {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Deportes updateDeportes(Deportes usr) {
+    public Deporte updateDeportes(Deporte usr) {
         return DeportesFachada.update(usr);
     }
 
@@ -68,7 +68,7 @@ public class DeportesSv {
     @Path("/{usrNo}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public void deleteDeportes(@PathParam("usrNo") int usrNo) {
-        Deportes u = DeportesFachada.get(usrNo);
+        Deporte u = DeportesFachada.get(usrNo);
         DeportesFachada.delete(u);
     }
 

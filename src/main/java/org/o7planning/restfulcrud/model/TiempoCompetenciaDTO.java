@@ -22,8 +22,8 @@ public class TiempoCompetenciaDTO {
     private int distancia;
     private String tiempo;
     private String categoria;
-    private EventoDTO eventoFK;
-    private DeportistaDTO deportistaFK;
+    private EventoDTO eventoDTO;
+    private DeportistaDTO deportistaDTO;
 
     public int getID_tiempos() {
         return ID_tiempos;
@@ -65,20 +65,20 @@ public class TiempoCompetenciaDTO {
         this.categoria = categoria;
     }
 
-    public EventoDTO getEventoFK() {
-        return eventoFK;
+    public EventoDTO getEventoDTO() {
+        return eventoDTO;
     }
 
-    public void setEventoFK(EventoDTO eventoFK) {
-        this.eventoFK = eventoFK;
+    public void setEventoDTO(EventoDTO eventoDTO) {
+        this.eventoDTO = eventoDTO;
     }
 
-    public DeportistaDTO getDeportistaFK() {
-        return deportistaFK;
+    public DeportistaDTO getDeportistaDTO() {
+        return deportistaDTO;
     }
 
-    public void setDeportistaFK(DeportistaDTO deportistaFK) {
-        this.deportistaFK = deportistaFK;
+    public void setDeportistaDTO(DeportistaDTO deportistaDTO) {
+        this.deportistaDTO = deportistaDTO;
     }
 
 }

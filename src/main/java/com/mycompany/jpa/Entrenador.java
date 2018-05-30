@@ -29,22 +29,19 @@ public class Entrenador implements Serializable {
     private String ciudad;
     private String contraseña;
 
-    public Entrenador() {
-        this.list_Asistencias = new ArrayList<>();
-        this.list_Deportistas = new ArrayList<>();
-        this.list_Rutinas = new ArrayList<>();
-    }
+    @ManyToOne
+    @JoinColumn(name = "deporteFK")
+    private Deporte deporteFK;
 
-    public Entrenador(String nombre, String apellido, String fechaNacimiento, int cedula, String ciudad, String contraseña) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
-        this.cedula = cedula;
-        this.ciudad = ciudad;
-        this.contraseña = contraseña;
-        this.list_Asistencias = new ArrayList<>();
-        this.list_Deportistas = new ArrayList<>();
-        this.list_Rutinas = new ArrayList<>();
+    @OneToMany(mappedBy = "entrenadorFK", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Asistencia> list_Asistencias;
+
+    @OneToMany(mappedBy = "entrenadorFK", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Rutina> list_Rutinas;
+
+    public Entrenador() {
+        list_Asistencias = new ArrayList<>();
+        list_Rutinas = new ArrayList<>();
     }
 
     public int getID_Entrenador() {
@@ -103,30 +100,14 @@ public class Entrenador implements Serializable {
         this.contraseña = contraseña;
     }
 
-    @Override
-    public String toString() {
-        return "Entrenador{" + "ID_Entrenador=" + ID_Entrenador + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento + ", cedula=" + cedula + ", ciudad=" + ciudad + ", contraseña=" + contraseña + '}';
-    }
-
-    //Realacoin de 0-1----1 entrew (Evento-Entrenador)
-    @ManyToOne
-    @JoinColumn(name = "deporteFK")
-    private Deportes deporteFK;
-
-    public Deportes getDeporteFK() {
+    public Deporte getDeporteFK() {
         return deporteFK;
     }
 
-    public void setDeporteFK(Deportes deporteFK) {
+    public void setDeporteFK(Deporte deporteFK) {
         this.deporteFK = deporteFK;
     }
 
-///// Relacion de 1-M entre (Entrenador --- Asistencia)
-    //Se Referencia al mapeo, con elnombre de la variable en la clase
-    @OneToMany(mappedBy = "entrenadorFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Asistencia> list_Asistencias;
-
-    ////
     public List<Asistencia> getList_Asistencias() {
         return list_Asistencias;
     }
@@ -135,45 +116,12 @@ public class Entrenador implements Serializable {
         this.list_Asistencias = list_Asistencias;
     }
 
-    public void addAsistencia(Asistencia objetoR) {
-        objetoR.setEntrenadorFK(this);
-        this.list_Asistencias.add(objetoR);
-    }
-
-    // Relacion de 1-M entre (Entrenador --- Deportista)
-    //Se Referencia al mapeo, con elnombre de la variable en la clase
-    @OneToMany(mappedBy = "entrenadorFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Deportista> list_Deportistas;
-
-    public List<Deportista> getList_Deportistas() {
-        return list_Deportistas;
-    }
-
-    public void setList_Deportistas(List<Deportista> list_Deportistas) {
-        this.list_Deportistas = list_Deportistas;
-    }
-
-    public void addDeportista(Deportista objetoR) {
-        objetoR.setEntrenadorFK(this);
-        this.list_Deportistas.add(objetoR);
-    }
-
-    // Relacion de 1-M entre (Entrenador --- Rutina)
-    //Se Referencia al mapeo, con elnombre de la variable en la clase
-    @OneToMany(mappedBy = "entrenadorFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Rutina> list_Rutinas;
-
     public List<Rutina> getList_Rutinas() {
         return list_Rutinas;
     }
 
     public void setList_Rutinas(List<Rutina> list_Rutinas) {
         this.list_Rutinas = list_Rutinas;
-    }
-
-    public void addRutina(Rutina objetoR) {
-        objetoR.setEntrenadorFK(this);
-        this.list_Rutinas.add(objetoR);
     }
 
 }

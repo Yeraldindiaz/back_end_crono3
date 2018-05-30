@@ -2,7 +2,7 @@ package com.mycompany.holamuntorest;
 
 import com.mycompany.jpa.Asistencia;
 import com.mycompany.jpa.Chequeo;
-import com.mycompany.jpa.Deportes;
+import com.mycompany.jpa.Deporte;
 import com.mycompany.jpa.Deportista;
 import com.mycompany.jpa.Entrenador;
 import com.mycompany.jpa.Evento;
@@ -11,7 +11,7 @@ import com.mycompany.jpa.TiempoCompetencia;
 import com.mycompany.jpa.TiempoEntreno;
 import org.o7planning.restfulcrud.model.AsistenciaDTO;
 import org.o7planning.restfulcrud.model.ChequeoDTO;
-import org.o7planning.restfulcrud.model.DeportesDTO;
+import org.o7planning.restfulcrud.model.DeporteDTO;
 import org.o7planning.restfulcrud.model.DeportistaDTO;
 import org.o7planning.restfulcrud.model.EntrenadorDTO;
 import org.o7planning.restfulcrud.model.EventoDTO;
@@ -26,7 +26,8 @@ public class ConversorDTO {
         asistenciaDTO.setJornada(a.getJornada());
         asistenciaDTO.setFecha(a.getFecha());
         asistenciaDTO.setID_Asistencia(a.getID_Asistencia());
-        asistenciaDTO.setEntrenadorFK(entrenadorToDTO(a.getEntrenadorFK()));
+        asistenciaDTO.setEntrenadorDTO(entrenadorToDTO(a.getEntrenadorFK()));
+        asistenciaDTO.setDeportistaDTO(deportistaToDTO(a.getDeportistaFK()));
         return asistenciaDTO;
     }
 
@@ -36,7 +37,7 @@ public class ConversorDTO {
         ChequeoDTO.setPrueba(a.getPrueba());
         ChequeoDTO.setDistancia(a.getDistancia());
         ChequeoDTO.setTiempo(a.getTiempo());
-        ChequeoDTO.setDeportistaFK(deportistaToDTO(a.getDeportistaFK()));
+        ChequeoDTO.setDeportistaDTO(deportistaToDTO(a.getDeportistaFK()));
         return ChequeoDTO;
     }
 
@@ -56,26 +57,26 @@ public class ConversorDTO {
     }
 
     public RutinaDTO rutinaToDTO(Rutina a) {
-        RutinaDTO RutinaDTO = new RutinaDTO();
-        RutinaDTO.setID_Rutina(a.getID_Rutina());
-        RutinaDTO.setJornada(a.getJornada());
-        RutinaDTO.setFecha(a.getFecha());
-        RutinaDTO.setEstilo(a.getEstilo());
-        RutinaDTO.setDistancia(a.getDistancia());
-        RutinaDTO.setRepeticiones(a.getRepeticiones());
-        RutinaDTO.setEntrenadorFK(entrenadorToDTO(a.getEntrenadorFK()));
-        return RutinaDTO;
+        RutinaDTO rutinaDTO = new RutinaDTO();
+        rutinaDTO.setID_Rutina(a.getID_Rutina());
+        rutinaDTO.setJornada(a.getJornada());
+        rutinaDTO.setFecha(a.getFecha());
+        rutinaDTO.setEstilo(a.getEstilo());
+        rutinaDTO.setDistancia(a.getDistancia());
+        rutinaDTO.setRepeticiones(a.getRepeticiones());
+        rutinaDTO.setEntrenadorDTO(entrenadorToDTO(a.getEntrenadorFK()));
+        return rutinaDTO;
     }
 
     public EventoDTO eventoToDTO(Evento a) {
-        EventoDTO EventoDTO = new EventoDTO();
-        EventoDTO.setID_Evento(a.getID_Evento());
-        EventoDTO.setFecha(a.getFecha());
-        EventoDTO.setNombre(a.getNombre());
-        EventoDTO.setLugar(a.getLugar());
-        EventoDTO.setTipo(a.getTipo());
-        EventoDTO.setDeporteFK(deportesToDTO(a.getDeport_FK()));
-        return EventoDTO;
+        EventoDTO eventoDTO = new EventoDTO();
+        eventoDTO.setID_Evento(a.getID_Evento());
+        eventoDTO.setFecha(a.getFecha());
+        eventoDTO.setNombre(a.getNombre());
+        eventoDTO.setLugar(a.getLugar());
+        eventoDTO.setTipo(a.getTipo());
+        eventoDTO.setDeporteFK(deportesToDTO(a.getDeport_FK()));
+        return eventoDTO;
     }
 
     public TiempoEntrenoDTO tiempoEntrenoToDTO(TiempoEntreno a) {
@@ -85,8 +86,8 @@ public class ConversorDTO {
         tiempoEntrenoDTO.setTiempo(a.getTiempo());
         tiempoEntrenoDTO.setTiempodescanso(a.getTiempodescanso());
         tiempoEntrenoDTO.setTiempoexigencia(a.getTiempoexigencia());
-        tiempoEntrenoDTO.setDeportistaFK(deportistaToDTO(a.getDeportistaFK()));
-        tiempoEntrenoDTO.setRutinaFK(rutinaToDTO(a.getRutinaFK()));
+        tiempoEntrenoDTO.setDeportistaDTO(deportistaToDTO(a.getDeportistaFK()));
+        tiempoEntrenoDTO.setRutinaDTO(rutinaToDTO(a.getRutinaFK()));
         return tiempoEntrenoDTO;
     }
 
@@ -103,8 +104,8 @@ public class ConversorDTO {
         return entrenadorDTO;
     }
 
-    public DeportesDTO deportesToDTO(Deportes a) {
-        DeportesDTO deportesDTO = new DeportesDTO();
+    public DeporteDTO deportesToDTO(Deporte a) {
+        DeporteDTO deportesDTO = new DeporteDTO();
         deportesDTO.setID_Deporte(a.getID_Deporte());
         deportesDTO.setNombre(a.getNombre());
         deportesDTO.setDescripcion(a.getDescripcion());
@@ -118,8 +119,8 @@ public class ConversorDTO {
         competenciaDTO.setDistancia(a.getDistancia());
         competenciaDTO.setTiempo(a.getTiempo());
         competenciaDTO.setCategoria(a.getCategoria());
-        competenciaDTO.setEventoFK(eventoToDTO(a.getEventoFK()));
-        competenciaDTO.setDeportistaFK(deportistaToDTO(a.getDeportistaFK()));
+        competenciaDTO.setEventoDTO(eventoToDTO(a.getEventoFK()));
+        competenciaDTO.setDeportistaDTO(deportistaToDTO(a.getDeportistaFK()));
         return competenciaDTO;
     }
 }

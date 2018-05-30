@@ -23,13 +23,13 @@ public class Asistencia implements Serializable {
     private String fecha;
     private String jornada;
 
-    public Asistencia() {
-    }
-
-    public Asistencia(String fecha, String jornada) {
-        this.fecha = fecha;
-        this.jornada = jornada;
-    }
+    @ManyToOne
+    @JoinColumn(name = "entrenadorFK")
+    private Entrenador entrenadorFK;
+    
+    @ManyToOne
+    @JoinColumn(name = "deportistaFK")
+    private Deportista deportistaFK;
 
     public int getID_Asistencia() {
         return ID_Asistencia;
@@ -55,16 +55,6 @@ public class Asistencia implements Serializable {
         this.jornada = jornada;
     }
 
-    @Override
-    public String toString() {
-        return "Asistencia{" + "ID_Asistencia=" + ID_Asistencia + ", fecha=" + fecha + ", jornada=" + jornada + '}';
-    }
-
-    //Realacoin de 0-1----1 entrew (Asistencia --- Entrenador)
-    @ManyToOne
-    @JoinColumn(name = "entrenadorFK")
-    private Entrenador entrenadorFK;
-
     public Entrenador getEntrenadorFK() {
         return entrenadorFK;
     }
@@ -73,11 +63,6 @@ public class Asistencia implements Serializable {
         this.entrenadorFK = entrenadorFK;
     }
 
-    //Realacoin de 0-1----1 entrew (Asistencia --- Deportista)
-    @ManyToOne
-    @JoinColumn(name = "deportistaFK")
-    private Deportista deportistaFK;
-
     public Deportista getDeportistaFK() {
         return deportistaFK;
     }
@@ -85,5 +70,5 @@ public class Asistencia implements Serializable {
     public void setDeportistaFK(Deportista deportistaFK) {
         this.deportistaFK = deportistaFK;
     }
-
+    
 }

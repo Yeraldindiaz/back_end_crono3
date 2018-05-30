@@ -5,6 +5,8 @@
  */
 package org.o7planning.restfulcrud.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -24,7 +26,7 @@ public class RutinaDTO {
     private String estilo;
     private String fecha;
     private String jornada;
-    private EntrenadorDTO entrenadorFK;
+    private EntrenadorDTO entrenadorDTO;
 
     public int getID_Rutina() {
         return ID_Rutina;
@@ -74,12 +76,12 @@ public class RutinaDTO {
         this.jornada = jornada;
     }
 
-    public EntrenadorDTO getEntrenadorFK() {
-        return entrenadorFK;
+    public EntrenadorDTO getEntrenadorDTO() {
+        return entrenadorDTO;
     }
 
-    public void setEntrenadorFK(EntrenadorDTO entrenadorFK) {
-        this.entrenadorFK = entrenadorFK;
+    public void setEntrenadorDTO(EntrenadorDTO entrenadorDTO) {
+        this.entrenadorDTO = entrenadorDTO;
     }
-
+    
 }

@@ -20,8 +20,8 @@ public class AsistenciaDTO {
     private int ID_Asistencia;
     private String fecha;
     private String jornada;
-    private EntrenadorDTO entrenadorFK;
-    private DeportistaDTO deportistaFk;
+    private EntrenadorDTO entrenadorDTO;
+    private DeportistaDTO deportistaDTO;
 
     public int getID_Asistencia() {
         return ID_Asistencia;
@@ -47,20 +47,20 @@ public class AsistenciaDTO {
         this.jornada = jornada;
     }
 
-    public EntrenadorDTO getEntrenadorFK() {
-        return entrenadorFK;
+    public EntrenadorDTO getEntrenadorDTO() {
+        return entrenadorDTO;
     }
 
-    public void setEntrenadorFK(EntrenadorDTO entrenadorFK) {
-        this.entrenadorFK = entrenadorFK;
+    public void setEntrenadorDTO(EntrenadorDTO entrenadorDTO) {
+        this.entrenadorDTO = entrenadorDTO;
     }
 
-    public DeportistaDTO getDeportistaFk() {
-        return deportistaFk;
+    public DeportistaDTO getDeportistaDTO() {
+        return deportistaDTO;
     }
 
-    public void setDeportistaFk(DeportistaDTO deportistaFk) {
-        this.deportistaFk = deportistaFk;
+    public void setDeportistaDTO(DeportistaDTO deportistaDTO) {
+        this.deportistaDTO = deportistaDTO;
     }
 
 }

@@ -30,21 +30,27 @@ public class Deportista implements Serializable {
     private String categoria;
     private String Contraseña;
 
-    public Deportista() {
-        this.list_Tiempo_Competencias = new ArrayList<>();
-        this.list_Chequeos = new ArrayList<>();
-        this.list_Asistencias = new ArrayList<>();
-        this.list_Tiempo_Entrenamientos = new ArrayList<>();
-    }
+    @ManyToOne
+    @JoinColumn(name = "deporteFK")
+    private Deporte deporteFK;
 
-    public Deportista(String nombre, String apellido, String fechaNacimiento, int cedula, String ciudad, String categoria, String Contraseña) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.fechaNacimiento = fechaNacimiento;
-        this.cedula = cedula;
-        this.ciudad = ciudad;
-        this.categoria = categoria;
-        this.Contraseña = Contraseña;
+    @ManyToOne
+    @JoinColumn(name = "entrenadorFK")
+    private Entrenador entrenadorFK;
+
+    @OneToMany(mappedBy = "deportistaFK", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TiempoCompetencia> list_Tiempo_Competencias;
+
+    @OneToMany(mappedBy = "deportistaFK", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Chequeo> list_Chequeos;
+
+    @OneToMany(mappedBy = "deportistaFK", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Asistencia> list_Asistencias;
+
+    @OneToMany(mappedBy = "deportistaFK", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TiempoEntreno> list_Tiempo_Entrenamientos;
+
+    public Deportista() {
         this.list_Tiempo_Competencias = new ArrayList<>();
         this.list_Chequeos = new ArrayList<>();
         this.list_Asistencias = new ArrayList<>();
@@ -115,28 +121,13 @@ public class Deportista implements Serializable {
         this.Contraseña = Contraseña;
     }
 
-    @Override
-    public String toString() {
-        return "Deportista{" + "ID_Deportista=" + ID_Deportista + ", nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento + ", cedula=" + cedula + ", ciudad=" + ciudad + ", categoria=" + categoria + ", Contrase\u00f1a=" + Contraseña + '}';
-    }
-
-    //Realacoin de 0-1----1 entrew (Evento-Deportista)
-    @ManyToOne
-    @JoinColumn(name = "deporteFK")
-    private Deportes deporteFK;
-
-    public Deportes getDeporteFK() {
+    public Deporte getDeporteFK() {
         return deporteFK;
     }
 
-    public void setDeporteFK(Deportes deporteFK) {
+    public void setDeporteFK(Deporte deporteFK) {
         this.deporteFK = deporteFK;
     }
-
-    //Realacoin de 0-1----1 entrew (Entrenaodr-Deportista)
-    @ManyToOne
-    @JoinColumn(name = "entrenadorFK")
-    private Entrenador entrenadorFK;
 
     public Entrenador getEntrenadorFK() {
         return entrenadorFK;
@@ -146,11 +137,6 @@ public class Deportista implements Serializable {
         this.entrenadorFK = entrenadorFK;
     }
 
-    // Relacion de 1-M entre (Deportista -- Tiempo Competencia)
-    //Se Referencia al mapeo, con elnombre de la variable en la clase
-    @OneToMany(mappedBy = "deportistaFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TiempoCompetencia> list_Tiempo_Competencias;
-
     public List<TiempoCompetencia> getList_Tiempo_Competencias() {
         return list_Tiempo_Competencias;
     }
@@ -158,17 +144,6 @@ public class Deportista implements Serializable {
     public void setList_Tiempo_Competencias(List<TiempoCompetencia> list_Tiempo_Competencias) {
         this.list_Tiempo_Competencias = list_Tiempo_Competencias;
     }
-
-    public void addTiempoComp(TiempoCompetencia tiempo_Competencia) {
-        tiempo_Competencia.setDeportistaFK(this);
-        this.list_Tiempo_Competencias.add(tiempo_Competencia);
-
-    }
-
-    // Relacion de 1-M entre (Deportista --- Chequeo)
-    //Se Referencia al mapeo, con elnombre de la variable en la clase
-    @OneToMany(mappedBy = "deportistaFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Chequeo> list_Chequeos;
 
     public List<Chequeo> getList_Chequeos() {
         return list_Chequeos;
@@ -178,17 +153,6 @@ public class Deportista implements Serializable {
         this.list_Chequeos = list_Chequeos;
     }
 
-    public void addChequeo(Chequeo chequeo) {
-        chequeo.setDeportistaFK(this);
-        this.list_Chequeos.add(chequeo);
-
-    }
-
-    // Relacion de 1-M entre (DEportista --- Asistencia)
-    //Se Referencia al mapeo, con elnombre de la variable en la clase
-    @OneToMany(mappedBy = "deportistaFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Asistencia> list_Asistencias;
-
     public List<Asistencia> getList_Asistencias() {
         return list_Asistencias;
     }
@@ -197,27 +161,12 @@ public class Deportista implements Serializable {
         this.list_Asistencias = list_Asistencias;
     }
 
-    public void addAsistencia(Asistencia objetoR) {
-        objetoR.setDeportistaFK(this);
-        this.list_Asistencias.add(objetoR);
-    }
-
-    // Relacion de 1-M entre (Deportista --- Tiempo entrenamiento)
-    //Se Referencia al mapeo, con elnombre de la variable en la clase
-    @OneToMany(mappedBy = "deportistaFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TiempoEntreno> list_Tiempo_Entrenamientos;
-
     public List<TiempoEntreno> getList_Tiempo_Entrenamientos() {
         return list_Tiempo_Entrenamientos;
     }
 
     public void setList_Tiempo_Entrenamientos(List<TiempoEntreno> list_Tiempo_Entrenamientos) {
         this.list_Tiempo_Entrenamientos = list_Tiempo_Entrenamientos;
-    }
-
-    public void addTiempoEntre(TiempoEntreno objetoR) {
-        objetoR.setDeportistaFK(this);
-        this.list_Tiempo_Entrenamientos.add(objetoR);
     }
 
 }
