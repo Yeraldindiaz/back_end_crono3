@@ -49,10 +49,24 @@ public class SingletonConnection {
     protected static void startOperation() { 
         URI dbUri = null;
         try {
-            dbUri = new URI(System.getenv("postgres://spvlrlwnmefrni:e95d3f05a830aab472f315745aaba683383dbdadd074880cf4b239914c4d50ac@ec2-54-225-107-174.compute-1.amazonaws.com:5432/d5b61a1cmao58r")); 
+            dbUri = new URI(System.getenv("DATABASE_URL")); 
             String username = dbUri.getUserInfo().split(":")[0];
             String password = dbUri.getUserInfo().split(":")[1];
             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
+            
+            System.out.println("$$$$$$$$$$###");
+            System.out.println("$$$$$$$$$$###");
+            System.out.println("$$$$$$$$$$###");
+            
+            System.out.println(dbUri);
+            System.out.println(username);
+            System.out.println(password);
+            System.out.println(dbUrl);
+            
+            System.out.println(dbUri.getHost()+"$$$$$$$$$$###"+dbUri.getPort()+"$$$$$$$$$$###"+dbUri.getPath());
+            
+            System.out.println("$$$$$$$$$$###");
+            System.out.println("$$$$$$$$$$###");
 
             Map<String, String> properties = new HashMap<String, String>();
             properties.put("javax.persistence.jdbc.url", dbUrl);
