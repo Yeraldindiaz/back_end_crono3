@@ -98,7 +98,7 @@ public class ConversorDTO {
         entrenadorDTO.setApellido(a.getApellido());
         entrenadorDTO.setCedula(a.getCedula());
         entrenadorDTO.setCiudad(a.getCiudad());
-        entrenadorDTO.setContrasena(a.getContrasena());
+        entrenadorDTO.setContraseña(a.getContrasena());
         entrenadorDTO.setFechaNacimiento(a.getFechaNacimiento());
         entrenadorDTO.setDeporteFK(deportesToDTO(a.getDeporteFK()));
         return entrenadorDTO;

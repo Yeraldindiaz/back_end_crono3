@@ -49,7 +49,7 @@ public class SingletonConnection {
     protected static void startOperation() { 
         URI dbUri = null;
         try {
-            dbUri = new URI(System.getenv("DATABASE_URL")); 
+            dbUri = new URI(System.getenv("postgres://spvlrlwnmefrni:e95d3f05a830aab472f315745aaba683383dbdadd074880cf4b239914c4d50ac@ec2-54-225-107-174.compute-1.amazonaws.com:5432/d5b61a1cmao58r")); 
             String username = dbUri.getUserInfo().split(":")[0];
             String password = dbUri.getUserInfo().split(":")[1];
             String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
@@ -65,7 +65,6 @@ public class SingletonConnection {
         } catch (URISyntaxException ex) {
             Logger.getLogger(SingletonConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-       
+              
     }
 }
